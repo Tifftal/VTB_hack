@@ -14,17 +14,17 @@ function PlaceBar(props: placeBarProps) {
 
   return (
     <div className='place_bar'>
-      <div className='place_bar-search_block' />
+      <div className='place_bar-search_block'>Search</div>
       <div className='place_bar-list'>
         {placeList.map((place, index) =>
           <div key={index} className='place_bar-place'>
             <h2>{place.name}</h2>
-            <p>{place.address}</p>
+            <p className='address'>{place.address}</p>
             <div className="distance">
-              <WaklIcon fill="gray"/>
+              <WaklIcon fill="gray" />
               <P variant='sm'>{place.distance} км</P>
             </div>
-            <p>{place.timeCar}</p>
+            <p className='time'>{place.timeCar}</p>
           </div>)}
       </div>
     </div>
