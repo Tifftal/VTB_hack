@@ -1,0 +1,235 @@
+.authorization {
+    overflow-y: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 120%;
+
+    form .input-field {
+        display: flex;
+        margin-top: 10%;
+        flex-direction: row;
+        column-gap: 2%;
+    }
+
+    .input-field input {
+        height: 3rem;
+        width: 3rem;
+        border-radius: 10px;
+        outline: none;
+        font-size: 130%;
+        text-align: center;
+        border: 1px solid #ddd;
+    }
+
+    .input-field input:focus {
+        border: 1px rgb(180, 180, 180) solid;
+    }
+
+    .input-field input::-webkit-inner-spin-button,
+    .input-field input::-webkit-outer-spin-button {
+        display: none;
+    }
+
+    form button {
+        cursor: pointer;
+        margin-top: 10%;
+        width: 100%;
+        height: 3rem;
+        color: #fff;
+        font-size: 100%;
+        border: none;
+        padding: 2% 0;
+        border-radius: 10px;
+        background: $main-color;
+        font-family: 'GilroyRegular';
+        transition: .3s;
+
+    }
+    form button:hover {
+        background: $hover-color;
+    }
+
+    .popup-head {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+
+
+        h1 {
+            margin: 0;
+            padding: 0;
+            font-size: 100%;
+            font-family: 'GilroyRegular';
+        }
+
+        p {
+            margin: 1% 0 0 0;
+            padding: 0;
+            font-size: 80%;
+            font-family: 'GilroyLight';
+        }
+
+        button {
+            cursor: pointer;
+            padding: 0;
+            margin: 0;
+            border: none;
+            background: none;
+            display: flex;
+            align-items: center;
+            transition: .3s;
+
+            svg {
+                width: 1.5rem;
+                fill: black;
+            }
+        }
+
+        button:hover {
+            svg {
+                fill: $main-color;
+            }
+        }
+    }
+
+    .WelcomeText {
+        width: 50%;
+        height: 100%;
+        background-color: $main-color;
+        color: white;
+        padding: 5%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        h1 {
+            width: 100%;
+            margin-top: 10%;
+        }
+
+        p {
+            font-size: 110%;
+        }
+
+        img {
+            width: 8rem;
+            margin-bottom: 5%;
+        }
+    }
+
+    .Registration {
+        height: 100%;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 5%;
+
+        p {
+            width: 80%;
+            font-size: 100%;
+            margin-top: 10%;
+        }
+
+        form {
+            margin-top: 2%;
+            width: 95%;
+            display: flex;
+            flex-direction: column;
+
+            label {
+                font-family: 'GilroyRegular';
+                font-size: 90%;
+                color: gray;
+                margin-top: 2%;
+            }
+
+            input {
+                border-radius: 10px;
+                border: rgb(235, 235, 235) 2px solid;
+                height: 1.5rem;
+                margin: 1% 0;
+                padding: 0.7rem;
+                transition: .3s;
+
+            }
+
+            input::placeholder {
+                padding: 0;
+                margin: 0;
+                font-size: 100%;
+                font-family: 'GilroyRegular';
+                color: rgb(190, 190, 190);
+            }
+
+            input:hover {
+                border: rgb(196, 196, 196) 2px solid;
+            }
+        }
+
+        .AuthorizationBtn {
+            width: 95%;
+            display: flex;
+            flex-direction: row;
+            margin-top: 8%;
+            padding: 0;
+
+            .RegBtn {
+                cursor: pointer;
+                padding: 2.5%;
+                color: white;
+                border: none;
+                border-radius: 10px;
+                font-family: 'GilroyMedium';
+            }
+
+            .active {
+                background-color: $main-color;
+                transition: .3s;
+            }
+
+            .active:hover {
+                transform: scale(1.02);
+            }
+
+            .LogBtn {
+                margin-left: 8%;
+                cursor: pointer;
+                padding: 2.5%;
+                background: none;
+                color: $main-color;
+                border: none;
+                border-radius: 10px;
+                font-family: 'GilroyMedium';
+            }
+        }
+
+        .Agree {
+            margin-top: 10%;
+
+            .form-control {
+                font-size: 80%;
+                color: gray;
+                display: flex;
+                flex-direction: row;
+                gap: 3%;
+                align-items: flex-start;
+                cursor: pointer;
+            }
+
+            input[type="checkbox"] {
+                margin: 0;
+                width: 1.15em;
+                height: 1.15em;
+            }
+        }
+
+    }
+
+}
