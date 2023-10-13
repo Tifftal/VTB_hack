@@ -4,19 +4,19 @@ import './index.scss'
 export default function SideBar({ children }: any) {
     const menuItem = [
         {
-            path: "/main",
-            name: "Main",
-            icon: '../icons8-банк-64.png'
+            path: "/",
+            name: "Map",
+            icon: '../icons8-map-100.png'
         },
         {
-            path: "/page1",
-            name: "Page1",
-            icon: '../icons8-банк-64.png'
+            path: "/history",
+            name: "History",
+            icon: '../icons8-history-96.png'
         },
         {
-            path: "/page2",
-            name: "Page2",
-            icon: '../icons8-банк-64.png'
+            path: "/profile",
+            name: "Profile",
+            icon: '../icons8-user-96-2.png'
         }
     ]
     return (

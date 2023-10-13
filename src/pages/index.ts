@@ -1,5 +1,5 @@
-import Page1 from "./page1";
-import Page2 from "./page2";
-import Main from "./main";
+import History from "./History";
+import Profile from "./Profile";
+import Map from "./Map";
 
-export {Page1, Page2, Main};
+export {History, Profile, Map};

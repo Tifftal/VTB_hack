@@ -3,7 +3,7 @@ import { useSignUpMutation } from '../../store/api/userApi';
 import './index.scss'
 import SideBar from '../../components/sideBar';
 
-function Page1() {
+function History() {
 
     // const [message, setMessage] = useState("");
     // const [user, setUser] = useState({
@@ -46,8 +46,8 @@ function Page1() {
     // }
 
     return (
-        <div className='Page1'>
-            <h1>Page1</h1>
+        <div className='History'>
+            <h1>History</h1>
             {/* <div>
                     <input
                         className="inputforms"
@@ -105,4 +105,4 @@ function Page1() {
 
 }
 
-export default Page1;
+export default History;

@@ -1,6 +1,6 @@
 import './index.scss'
 
-function Main() {
+function Map() {
 
     return (
         <div className="MainPage">
@@ -10,4 +10,4 @@ function Main() {
 
 }
 
-export default Main;
+export default Map;
