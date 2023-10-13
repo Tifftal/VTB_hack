@@ -3,52 +3,52 @@ import { useSignUpMutation } from '../../store/api/userApi';
 import './index.scss'
 import SideBar from '../../components/sideBar';
 
-function History() {
+function HistoryPage() {
 
-    // const [message, setMessage] = useState("");
-    // const [user, setUser] = useState({
-    //     firstname: "",
-    //     secondname: "",
-    //     email: "",
-    //     password1: "",
-    //     password2: ""
-    // });
+  // const [message, setMessage] = useState("");
+  // const [user, setUser] = useState({
+  //     firstname: "",
+  //     secondname: "",
+  //     email: "",
+  //     password1: "",
+  //     password2: ""
+  // });
 
-    // const [signUp, { error: signUpError, isSuccess: isSignUpSuccess }] = useSignUpMutation();
+  // const [signUp, { error: signUpError, isSuccess: isSignUpSuccess }] = useSignUpMutation();
 
-    // useEffect(() => {
-    //     if (signUpError) {
-    //         setMessage("ошибка");
-    //         console.error(signUpError);
-    //     }
-    // }, [signUpError])
-    // useEffect(() => {
-    //     if (isSignUpSuccess) {
-    //         setMessage("Успех");
-    //     }
-    // }, [isSignUpSuccess])
+  // useEffect(() => {
+  //     if (signUpError) {
+  //         setMessage("ошибка");
+  //         console.error(signUpError);
+  //     }
+  // }, [signUpError])
+  // useEffect(() => {
+  //     if (isSignUpSuccess) {
+  //         setMessage("Успех");
+  //     }
+  // }, [isSignUpSuccess])
 
-    // const handleSignUp = async () => {
-    //     if (user) {
-    //         await signUp({ firstname: user.firstname, secondname: user.secondname, email: user.email, password1: user.password1, password2: user.password2 }).unwrap();
-    //         clearStateUser();
-    //     }
-    // }
+  // const handleSignUp = async () => {
+  //     if (user) {
+  //         await signUp({ firstname: user.firstname, secondname: user.secondname, email: user.email, password1: user.password1, password2: user.password2 }).unwrap();
+  //         clearStateUser();
+  //     }
+  // }
 
-    // const clearStateUser = () => {
-    //     setUser(prevState => ({
-    //         ...prevState, firstname: "",
-    //         secondname: "",
-    //         email: "",
-    //         password1: "",
-    //         password2: ""
-    //     }))
-    // }
+  // const clearStateUser = () => {
+  //     setUser(prevState => ({
+  //         ...prevState, firstname: "",
+  //         secondname: "",
+  //         email: "",
+  //         password1: "",
+  //         password2: ""
+  //     }))
+  // }
 
-    return (
-        <div className='History'>
-            <h1>History</h1>
-            {/* <div>
+  return (
+    <div className='History'>
+      <h1>History</h1>
+      {/* <div>
                     <input
                         className="inputforms"
                         type="text"
@@ -100,9 +100,9 @@ function History() {
                     </button>
                 </div>
                 {message && <h1>{message}</h1>} */}
-        </div>
-    )
+    </div>
+  )
 
 }
 
-export default History;
+export { HistoryPage };

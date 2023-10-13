@@ -1,5 +1,5 @@
-import History from "./History";
-import Profile from "./Profile";
-import Map from "./Map";
+import { HistoryPage } from "./HistoryPage";
+import { ProfilePage } from "./ProfilePage";
+import { MapPage } from "./MapPage";
 
-export {History, Profile, Map};
+export { HistoryPage, ProfilePage, MapPage };

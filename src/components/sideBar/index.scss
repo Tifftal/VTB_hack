@@ -1,67 +1,65 @@
 .SideBar {
-    border-radius: 10px;
-    width: 16vw;
-    height: 96vh;
+  height: 100%;
+  width: 16vw;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 1vh 2vw;
+  background-color: $main-color;
+  font-family: "GilroyRegular";
+
+  .top_section {
     display: flex;
-    flex-direction: column;
-    padding: 1vh 2vw;
-    background-color: $main-color;
-    font-family: 'GilroyRegular';
+    width: 100%;
+    border-bottom: 1px solid white;
+    align-content: center;
+    justify-content: center;
+    margin-bottom: 15%;
 
-    .top_section {
-        display: flex;
-        width: 100%;
-        border-bottom: 1px solid white;
-        align-content: center;
-        justify-content: center;
-        margin-bottom: 15%;
+    img {
+      align-self: center;
+      width: 6rem;
+      margin: 5% 0;
+    }
+  }
 
-        img {
-            align-self: center;
-            width: 6rem;
-            margin: 5% 0;
-        }
+  .non-active-class,
+  .active-class {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1vh 1vw;
+    margin: 2% 0;
+    text-decoration: none;
+    border-radius: 15px;
+    transition: 0.3s;
+
+    img {
+      margin: 0 8% 0 0;
+      padding: 0;
+      width: 1.5rem;
     }
 
-    .non-active-class,
-    .active-class {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        padding: 1vh 1vw;
-        margin: 2% 0;
-        text-decoration: none;
-        border-radius: 15px;
-        transition: .3s;
-
-        img {
-            margin: 0 8% 0 0;
-            padding: 0;
-            width: 1.5rem;
-        }
-
-        .link_text {
-            margin: 0;
-            padding: 3px 0 0 0;
-            font-size: 120%;
-        }
+    .link_text {
+      margin: 0;
+      padding: 3px 0 0 0;
+      font-size: 120%;
     }
+  }
 
-    .non-active-class:hover {
-        background-color: rgba(255, 255, 255, 0.2);
+  .non-active-class:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .non-active-class {
+    color: white;
+  }
+
+  .active-class {
+    background-color: rgb(255, 255, 255);
+    color: black;
+    img {
+      filter: invert(1);
     }
-
-    .non-active-class {
-        color: white;
-    }
-
-    .active-class {
-        background-color: rgb(255, 255, 255);
-        color: black;
-        img {
-            filter: invert(1);
-        }
-    }
-
-
+  }
 }

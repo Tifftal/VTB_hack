@@ -1,9 +1,73 @@
 html {
-    overflow: hidden;
+  overflow: hidden;
+}
+.container {
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  
+  main {
+    width: 100%;
+  }
 }
 
-.container {
-    margin: 1vh;
-    display: flex;
-    flex-direction: row;
+* {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6, p, a {
+  margin: 0;
+}
+
+@font-face {
+  font-family: GilroyBold;
+  src: url(../Gilroy-Bold.ttf);
+}
+
+@font-face {
+  font-family: GilroyExtraBold;
+  src: url(../Gilroy-ExtraBold.ttf);
+}
+
+@font-face {
+  font-family: GilroyLight;
+  src: url(../Gilroy-Light.ttf);
+}
+
+@font-face {
+  font-family: GilroyMedium;
+  src: url(../Gilroy-Medium.ttf);
+}
+
+@font-face {
+  font-family: GilroyRegular;
+  src: url(../Gilroy-Regular.ttf);
+}
+
+@font-face {
+  font-family: GilroySemibold;
+  src: url(../Gilroy-Semibold.ttf);
+}
+
+*::-webkit-scrollbar {
+  width: 0.3em;
+  height: 0.3em;
+}
+
+*::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(153, 153, 156, 0.7);
+  border-radius: 6px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #5664d2;
 }

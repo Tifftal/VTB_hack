@@ -1,7 +1,7 @@
 import SideBar from '../../components/sideBar';
 import './index.scss'
 
-function Profile() {
+function ProfilePage() {
 
     return (
         <div className='Profile'>
@@ -11,4 +11,4 @@ function Profile() {
 
 }
 
-export default Profile;
+export {ProfilePage};

@@ -1,0 +1,28 @@
+.place_bar {
+  height: 100%;
+  width: 250px;
+  border-left: 1px solid gray;
+
+  .place_bar-search_block {
+    height: 50px;
+    background-color: $main-color;
+  }
+
+  .place_bar-list {
+    height: 100%;
+    overflow: scroll;
+
+    .place_bar-place {
+      padding: 10px;
+      h2 {
+
+      }
+      .distance {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+      }
+
+    }
+  }
+}
