@@ -77,6 +77,10 @@ export function Authorizaton() {
                     <input type='password' placeholder='Password' />
                     <label>Повторите пароль</label>
                     <input type='password' placeholder='Password' />
+                    <label className="form-ur">
+                        <input className="UrLico" type="checkbox" name="checkbox" />
+                        Являюсь юридическим лицом
+                    </label>
                 </form>
                 <div className='AuthorizationBtn'>
                     <button className='RegBtn active' onClick={HandleOpenNote}>Зарегистрироваться</button>
@@ -84,7 +88,7 @@ export function Authorizaton() {
                 </div>
                 <form className='Agree'>
                     <label className="form-control">
-                        <input type="checkbox" name="checkbox" />
+                        <input type="checkbox" name="agree" />
                         С текстом лецензионного договора-оферты согласен и даю согласие на обработку своих персональных данных.
                     </label>
                 </form>
