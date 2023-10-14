@@ -1,6 +1,101 @@
-// .Page2 {
-//     display: flex;
-//     flex-direction: row;
-//     margin: 1vh;
-//     width: 100%;
-// }
+.Profile {
+    display: flex;
+    flex-direction: column;
+    margin: 1vh;
+
+    .header-image {
+        width: 99.5%;
+        border-radius: 15px;
+        margin-bottom: 2%;
+    }
+
+    .profile-image {
+        // position: absolute;
+        // top: 18%;
+        // left: 10%;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        gap: 2%;
+        margin-top: -5%;
+        margin-left: 5%;
+        margin-bottom: 3%;
+
+        img {
+            width: 10rem;
+            border-radius: 100%;
+            border: 10px rgb(243, 247, 250) solid;
+        }
+
+        h1 {
+            white-space: nowrap;
+            word-wrap: none;
+            font-size: 160%;
+            font-family: 'GilroyLight';
+            margin-bottom: 2%;
+        }
+    }
+
+    .user-data {
+        width: 95.5%;
+        display: grid;
+        grid-template-rows: repeat(5, 3rem);
+        grid-row-gap: 1rem;
+        margin-left: 2%;
+
+        div {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            border-bottom: 2px solid rgb(0, 133, 255, 0.2);
+
+            h2 {
+                width: 30%;
+                font-size: 120%;
+                margin-left: 1%;
+                font-family: 'GilroyLight';
+                color: $main-color;
+            }
+
+            p {
+                width: 40%;
+                font-size: 110%;
+                font-family: 'GilroyRegular';
+            }
+
+            a {
+                width: 30%;
+                text-align: center;
+
+                button {
+                    cursor: pointer;
+                    background: none;
+                    color: $main-color;
+                    border: none;
+                    text-decoration: underline;
+                    font-family: 'GilroyRegular';
+                    font-size: 110%;
+                }
+            }
+
+        }
+    }
+    .delete-profile{
+        cursor: pointer;
+        margin-top: 3%;
+        width: 15%;
+        padding: 0.5% 0;
+        margin-left: 2%;
+        background: none;
+        border-radius: 15px;
+        border: 1px solid $primary-color;
+        font-size: 110%;
+        color: $primary-color;
+        font-family: 'GilroyRegular';
+        transition: all .3s ease-in-out;
+    }
+    .delete-profile:hover {
+        background-color: $primary-color;
+        color: white;
+    }
+}
