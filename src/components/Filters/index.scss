@@ -23,13 +23,13 @@
 	}
 }
 
-input[type=checkbox] {
+.input-filter[type=checkbox] {
 	height: 0;
 	width: 0;
 	visibility: hidden;
 }
 
-label {
+.label-filter {
 	cursor: pointer;
 	width: 2.5rem;
 	height: 1.5rem;
@@ -40,7 +40,7 @@ label {
 	margin-right: 5%;
 }
 
-label:after {
+.label-filter:after {
 	content: '';
 	position: absolute;
 	top: 0.2rem;
@@ -52,11 +52,11 @@ label:after {
 	transition: 0.3s;
 }
 
-input:checked+label {
+.input-filter:checked+.label-filter {
 	background: $main-color;
 }
 
-input:checked+label:after {
+.input-filter:checked+.label-filter:after {
 	left: calc(100% - 0.25rem);
 	transform: translateX(-100%);
 }
