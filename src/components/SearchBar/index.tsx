@@ -13,7 +13,6 @@ const SearchBar: React.FC = () => {
 
     useEffect(() => {
         const timerId = setTimeout(() => { }, 500);
-        console.log(error);
 
         return () => clearTimeout(timerId);
     }, [searchTerm]);
