@@ -9,22 +9,22 @@ export default function SideBar({ children }: any) {
   const menuItem = [
     {
       path: "/",
-      name: "Map",
+      name: "Карта",
       icon: <img src="../icons8-map-100.png"></img>,
     },
     {
       path: "/history",
-      name: "History",
+      name: "История",
       icon: <img src="../icons8-history-96.png"></img>,
     },
     {
       path: "/profile",
-      name: "Profile",
+      name: "Профиль",
       icon: <img src="../icons8-user-96-2.png"></img>,
     },
     {
       path: "/authorization",
-      name: "Войти",
+      name: "Выйти",
       icon: <SignUpIcon fill="white" />,
     }
   ]
