@@ -14,9 +14,9 @@ function PlaceBar(props: IPlaceBarProps) {
 
   return (
     <div className='place_bar'>
-      <div className='place_bar-search_block'>
+      {/* <div className='place_bar-search_block'>
         <Search {...searchProps} />
-      </div>
+      </div> */}
       {placeList.length && <div className='place_bar-list'>
         {placeList.map((place, index) =>
           <div key={index} className='place_bar-place'>

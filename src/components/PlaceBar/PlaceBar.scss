@@ -7,17 +7,17 @@
   flex-direction: column;
   align-items: center;
 
-  .place_bar-search_block {
-    width: 100%;
-    height:5vh;
-    background-color: transparent;
-    border-radius: 50px;
-    margin-top: 5%;
-    z-index: 20;
-  }
+  // .place_bar-search_block {
+  //   width: 100%;
+  //   height:5vh;
+  //   background-color: transparent;
+  //   border-radius: 50px;
+  //   margin-top: 5%;
+  //   z-index: 20;
+  // }
 
   .place_bar-list {
-    height: 93vh;
+    height: 100vh;
     overflow: scroll;
 
     .place_bar-place {

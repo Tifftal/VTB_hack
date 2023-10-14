@@ -1,54 +1,43 @@
-import React, { useEffect, useState } from 'react';
-import { IBranch, useGetBranchesQuery } from '../../store/api/searchApi';
 import './index.scss';
 import Filter from '../Filters';
+import { useState } from 'react';
+import { api } from '../../store/axiosCore/api';
 
-const SearchBar: React.FC = () => {
-    const [searchTerm, setSearchTerm] = useState<string>('');
-    const { data: branches, error } = useGetBranchesQuery({ query: searchTerm });
+const SearchBar = () => {
 
-    const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchTerm(e.target.value);
+    const [query, setQuery] = useState("");
+
+    const sendQuery = async (e: any) => {
+        e.preventDefault();
+        try {
+            const response = await api.get(`/api/branches/get-branch-by-search/${query}`);
+            console.log(response)
+        } catch (error) {
+            console.log(error);
+        }
+        console.log(query);
+    }
+
+    const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            sendQuery(e);
+        }
     };
-
-    useEffect(() => {
-        const timerId = setTimeout(() => { }, 500);
-
-        return () => clearTimeout(timerId);
-    }, [searchTerm]);
 
     return (
         <div className="search-bar">
             <form className="search">
                 <input
+                    className='search-input'
                     type="text"
                     placeholder="Поиск"
-                    value={searchTerm}
-                    onChange={handleSearchChange}
+                    onChange={(e) => setQuery(e.target.value)}
+                    onKeyPress={handleKeyPress}
                 />
             </form>
-            {/* <Filter /> */}
-
-            {branches === undefined && <p>Loading...</p>}
-
-            {error && (
-                <p>Error: {typeof error === 'string' ? error : "error"}</p>
-            )}
-
-            {branches && branches.length > 0 && (
-                <div>
-                    <h2>Search Results</h2>
-                    <ul>
-                        {branches.map((branch: IBranch) => (
-                            <li key={branch.id}>
-                                {branch.salePointName}
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            )}
-
-            {branches && branches.length === 0 && <p>No results found.</p>}
+            <div>
+                <Filter />
+            </div>
         </div>
     );
 };
