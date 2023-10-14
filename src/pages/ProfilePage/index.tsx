@@ -1,6 +1,24 @@
 import './index.scss'
 
 function ProfilePage() {
+    const profileFields = [
+        {
+            name: "Карта",
+            button: "Edit",
+        },
+        {
+            name: "История",
+            button: "Edit",
+        },
+        {
+            name: "Профиль",
+            button: "Edit",
+        },
+        {
+            name: "Выйти",
+            button: "Edit",
+        }
+    ]
 
     return (
         <div className='Profile'>
@@ -10,7 +28,7 @@ function ProfilePage() {
                 <h1>Varvara Talankina</h1>
             </div>
             <div className='user-data'>
-                <div>
+                {/* <div>
                     <h2>Фамилия</h2>
                     <p>Таланкина</p>
                     <a><button>Edit</button></a>
@@ -30,7 +48,7 @@ function ProfilePage() {
 
                 <div>
                     <h2>Пароль</h2>
-                    <p>****************</p>  {/* тут никакого пароля не будет, тупо звездочки */}
+                    <p>****************</p>  
                     <a><button>Edit</button></a>
                 </div>
 
@@ -38,7 +56,7 @@ function ProfilePage() {
                     <h2>Юр. лицо</h2>
                     <p>Не являюсь юр. лицом</p>
                     <a><button>Edit</button></a>
-                </div>
+                </div> */}
 
             </div>
 
