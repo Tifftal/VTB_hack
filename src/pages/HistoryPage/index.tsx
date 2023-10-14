@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSignUpMutation } from '../../store/api/userApi';
 import './index.scss'
 import SideBar from '../../components/sideBar';
+import MapWindow from '../../components/map';
 
 function HistoryPage() {
 
@@ -48,6 +49,7 @@ function HistoryPage() {
   return (
     <div className='History'>
       <h1>History</h1>
+      <MapWindow/>
       {/* <div>
                     <input
                         className="inputforms"
