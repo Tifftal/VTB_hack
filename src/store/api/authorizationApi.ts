@@ -2,11 +2,11 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { BASE_URL } from '../types';
 
 export interface IUserRegistration {
-  firstName: string;
-  secondName: string;
-  middleName?: string;
-  email: string;
-  password: string;
+  FirstName: string;
+  SecondName: string;
+  MiddleName?: string;
+  Email: string;
+  Password: string;
   rPassword: string;
 }
 

@@ -4,16 +4,23 @@ import { ChangeEvent, ClickEvent } from "../../app.typing";
 
 export const useAuthorization = () => {
 
+  interface UserRegistration {
+    firstName: string;
+    secondName: string;
+    email: string;
+    password: string;
+    rPassword: string;
+  };
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLogInPage, setIsLoginPage] = useState(false);
   const inputRefs = useRef<Array<HTMLInputElement | null>>([]);
-  const [formData, setFormData] = useState<IUserRegistration>({
+  const [formData, setFormData] = useState<UserRegistration>({
     firstName: "",
     secondName: "",
     email: "",
     password: "",
     rPassword: "",
-    middleName: "",
   });
   const defaulErrors = {
     firstName: "",
@@ -24,7 +31,7 @@ export const useAuthorization = () => {
     middleName: "",
     message: "",
   };
-  const [formDataErrors, setFormDataErrors] = useState({...defaulErrors});
+  const [formDataErrors, setFormDataErrors] = useState({ ...defaulErrors });
 
   const [
     signUp,
@@ -61,7 +68,7 @@ export const useAuthorization = () => {
   };
   const handleInputChange = (e: ChangeEvent) => {
     const { name, value } = e.target;
-    setFormDataErrors((prev) => ({...prev, [name]: ""}))
+    setFormDataErrors((prev) => ({ ...prev, [name]: "", "message": "" }))
     setFormData((prev) => ({ ...prev, [name]: value.trim() }))
   }
   const handleChangeLoginType = (e: ClickEvent) => {
@@ -89,9 +96,9 @@ export const useAuthorization = () => {
     }
     if (!isEmailValid(formData.email)) {
       isValid = false;
-      setFormDataErrors((prev) => ({...prev, email: "Некорректный адрес почты"}));
+      setFormDataErrors((prev) => ({ ...prev, email: "Некорректный адрес почты" }));
     }
-    if (isValid) setFormDataErrors({...defaulErrors})
+    if (isValid) setFormDataErrors({ ...defaulErrors })
     return isValid;
   };
 
@@ -105,10 +112,10 @@ export const useAuthorization = () => {
   const handleRegClick = () => {
     if (isFormDataValid()) {
       signUp({
-        firstName: formData.firstName,
-        secondName: formData.secondName,
-        email: formData.email,
-        password: formData.password,
+        FirstName: formData.firstName,
+        SecondName: formData.secondName,
+        Email: formData.email,
+        Password: formData.password,
         rPassword: formData.rPassword
       });
     }
