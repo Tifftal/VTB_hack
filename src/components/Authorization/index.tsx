@@ -1,6 +1,7 @@
 import './Authorization.scss';
 import Popup from '../Popup';
 import { useAuthorization } from './useAuthorization';
+import { LogoIcon } from '../../UI/icons';
 
 export function Authorizaton() {
 
@@ -55,7 +56,9 @@ export function Authorizaton() {
           <h1>Станьте нашим клиентом</h1>
           <p>Уважаемые клиенты, рады приветствовать Вас на сайте ВТБ! </p>
         </div>
-        <img src='../Group 7-3.png' alt='logo' />
+        <div className='LOGO'>
+          <LogoIcon fill="white" />
+        </div>
       </div>
 
       <div className='Registration'>
@@ -65,7 +68,6 @@ export function Authorizaton() {
         </div>
         {isLogInPage ? (
           <>
-            <p>Для регистрации заполните форму, все поля обязательны для заполнения.</p>
             <form>
               <label>Введите Email</label>
               <input type='text' placeholder='Ivanov@mail.ru' name='email' value={formData.email} onChange={handleInputChange} />
@@ -73,12 +75,13 @@ export function Authorizaton() {
               <input type='password' placeholder='Password' name='password' value={formData.password} onChange={handleInputChange} />
             </form>
             <div className='AuthorizationBtn'>
-              <button className='RegBtn active'>Войти</button>
+              <button className='LogBtn active'>Войти</button>
             </div>
           </>
         ) : (
           <>
-            <p>Для регистрации заполните форму, все поля обязательны для заполнения.</p><form>
+            <p>Для регистрации заполните форму, все поля обязательны для заполнения.</p>
+            <form>
               <label>Введите Имя</label>
               <input type='text' placeholder='Иван' name='firstName' value={formData.firstName} onChange={handleInputChange} style={formDataErrors.firstName ? { border: "2px solid red" } : {}} />
               <label>Введите Фамилию</label>
@@ -94,7 +97,7 @@ export function Authorizaton() {
                 Являюсь юридическим лицом
               </label>
             </form>
-            <p style={{color: "red"}}>{formDataErrors.message}</p>
+            <p style={{ color: "#E62632" }}>{formDataErrors.message}</p>
             <div className='AuthorizationBtn'>
               <button className='RegBtn active' onClick={handleRegClick}>Зарегистрироваться</button>
             </div>

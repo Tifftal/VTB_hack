@@ -84,7 +84,7 @@ export const useAuthorization = () => {
     for (const key of formDataKeys) {
       if (!formData[key]) {
         isValid = false
-        setFormDataErrors((prev) => ({...prev, [key]: "Заполните поле", "message": "Заполните поле"}));
+        setFormDataErrors((prev) => ({...prev, [key]: "Заполните все поля", "message": "Заполните все поля"}));
       };
     }
     if (!isEmailValid(formData.email)) {
