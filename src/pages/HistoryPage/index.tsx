@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { useSignUpMutation } from '../../store/api/userApi';
+import { useSignUpMutation } from '../../store/api/authorizationApi';
 import './index.scss'
-import SideBar from '../../components/sideBar';
+import SideBar from '../../components/SideBar';
 
 function HistoryPage() {
 

@@ -6,7 +6,7 @@ import {
 } from "react-redux";
 
 import { reducer as counterReducer } from "./slices/countSlice.ts"
-import { userApi } from './api/userApi.ts';
+import { userApi } from './api/authorizationApi.ts';
 /* import { socketMiddleware } from './middleware.ts'; */
 
     // тут апи

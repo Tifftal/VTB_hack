@@ -138,10 +138,28 @@
         justify-content: flex-start;
         padding: 0 5%;
 
+        .log_type_buttons {
+          width: 100%;
+          display: flex;
+          gap: 20px;
+          justify-content: center;
+          margin-top: 5%;
+          button {
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            color: gray;
+
+            &.active {
+              color: $dark-color;
+            }
+          }
+        }
+
         p {
             width: 80%;
             font-size: 100%;
-            margin-top: 10%;
+            margin-top: 5%;
         }
 
         form {

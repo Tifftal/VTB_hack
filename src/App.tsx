@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HistoryPage, MapPage, ProfilePage } from "./pages";
 import './App.scss'
 import { Authorizaton } from "./components/Authorization";
-import SideBar from "./components/sideBar";
+import SideBar from "./components/SideBar";
 
 
 function App() {

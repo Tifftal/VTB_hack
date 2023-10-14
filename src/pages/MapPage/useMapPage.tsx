@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { bankProps } from "../../store/api/banksApi";
-import { placeBarProps } from "../../components/PlaceBar";
+import { placeProps } from "../../store/api/banksApi";
+import { IPlaceBarProps } from "../../components/PlaceBar";
+import { ISearchProps } from "../../UI/Seach";
+import { ChangeEvent } from "../../app.typing";
 
 export const useMapPage = () => {
-  const [isPlaceBarActive, setIsPlaceBarActive] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
 
-  const bankList: bankProps[] = [
+  const bankList: placeProps[] = [
     {
       name: "Центральный филиал ВТБ",
       address: "Улица Центральная, 123",
@@ -118,10 +120,20 @@ export const useMapPage = () => {
     }
   ]
 
-  const placeBarProps: placeBarProps = {
-    active: isPlaceBarActive,
-    setActive: () => setIsPlaceBarActive(false),
+  const handleSeachChange = (e: ChangeEvent) => {
+    setSearchValue(e.target.value)
+  }
+
+  const searchProps: ISearchProps = {
+    value: searchValue,
+    placeholder: "Поиск",
+    disabled: false,
+    onChange: handleSeachChange,
+  }
+
+  const placeBarProps: IPlaceBarProps = {
     placeList: bankList,
+    searchProps: searchProps
   }
 
   return { placeBarProps }

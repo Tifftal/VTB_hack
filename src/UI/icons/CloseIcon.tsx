@@ -6,8 +6,8 @@ const CloseIcon: FC<IconType> = (props) => {
   const { fill, height, width } = props;
   return (
     <svg
-      width={width ? width : "20"}
-      height={height ? height : "20"}
+      width={width || "20"}
+      height={height || "20"}
       viewBox="0 0 12 12"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

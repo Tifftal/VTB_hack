@@ -1,21 +1,23 @@
 import './PlaceBar.scss';
-import { P } from '../../UI/P/P';
+import { P, Search } from '../../UI';
 import { WaklIcon } from '../../UI/icons';
-import { bankProps } from '../../store/api/banksApi';
+import { placeProps } from '../../store/api/banksApi';
+import { ISearchProps } from '../../UI/Seach';
 
-export interface placeBarProps {
-  placeList: bankProps[];
-  active: boolean;
-  setActive: () => void;
+export interface IPlaceBarProps {
+  searchProps: ISearchProps;
+  placeList: placeProps[];
 }
 
-function PlaceBar(props: placeBarProps) {
-  const { placeList, active, setActive, } = props;
+function PlaceBar(props: IPlaceBarProps) {
+  const { placeList, searchProps, } = props;
 
   return (
     <div className='place_bar'>
-      <div className='place_bar-search_block'>Search</div>
-      <div className='place_bar-list'>
+      <div className='place_bar-search_block'>
+        <Search {...searchProps} />
+      </div>
+      {placeList.length && <div className='place_bar-list'>
         {placeList.map((place, index) =>
           <div key={index} className='place_bar-place'>
             <h2>{place.name}</h2>
@@ -26,7 +28,7 @@ function PlaceBar(props: placeBarProps) {
             </div>
             <p className='time'>{place.timeCar}</p>
           </div>)}
-      </div>
+      </div>}
     </div>
   )
 };
