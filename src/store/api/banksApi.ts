@@ -1,6 +1,6 @@
 // тут будут запросы, а пока только тип
 
-export interface bankProps {
+export interface placeProps {
   name: string;
   address: string;
   timeWalk: string;

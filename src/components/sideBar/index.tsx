@@ -1,39 +1,59 @@
 import { NavLink } from "react-router-dom";
 import './index.scss'
+import { useState } from "react";
+import { LogoIcon, SignUpIcon } from "../../UI/icons";
 
 export default function SideBar({ children }: any) {
+  const [isSideBarActive, setIsSideBarActive] = useState(false);
+
   const menuItem = [
     {
       path: "/",
-      name: "Map",
-      icon: '../icons8-map-100.png'
+      name: "Карта",
+      icon: <img src="../icons8-map-100.png"></img>,
     },
     {
       path: "/history",
-      name: "History",
-      icon: '../icons8-history-96.png'
+      name: "История",
+      icon: <img src="../icons8-history-96.png"></img>,
     },
     {
       path: "/profile",
-      name: "Profile",
-      icon: '../icons8-user-96-2.png'
+      name: "Профиль",
+      icon: <img src="../icons8-user-96-2.png"></img>,
+    },
+    {
+      path: "/authorization",
+      name: "Выйти",
+      icon: <SignUpIcon fill="white" />,
     }
   ]
   return (
     <div className="container">
-      <div className="SideBar">
+      <div className={isSideBarActive ? "sidebar" : "sidebar close"}>
         <div className="top_section">
-          <img src="../Group 7-3.png" />
+          <div className="logo">
+            <LogoIcon fill="white"/>
+          </div>
+          <button
+            className={isSideBarActive ? "" : "close"}
+            onClick={() => setIsSideBarActive(!isSideBarActive)}
+          >
+            <span className="top"></span>
+            <span className="middle"></span>
+            <span className="bottom"></span>
+          </button>
         </div>
         {
           menuItem.map((item, index) => (
             <NavLink to={item.path} key={index} className={({ isActive }) => isActive ? "active-class" : "non-active-class"} >
-              <img src={item.icon} />
+              <div className="icon">
+                {item.icon} 
+              </div>
               <div className="link_text">{item.name}</div>
             </NavLink>
           ))
         }
-        <a href="/authorization">Sign Up</a>
       </div>
       <main>{children}</main>
     </div>

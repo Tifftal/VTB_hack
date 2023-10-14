@@ -1,44 +1,122 @@
-.SideBar {
+
+.sidebar {
   margin: 1vh;
   height: 98vh;
-  width: 20vw;
+  width: 220px;
   border-radius: 10px;
   display: flex;
+  gap: 10px;
   flex-direction: column;
-  padding: 1vh;
+  padding: 8px;
   background-color: $main-color;
+  z-index: 50;
   font-family: "GilroyRegular";
+  transition: 0.3s;
+
+  &.close {
+    width: 60px;
+    flex-shrink: 0;
+    .top_section {
+      justify-content: center;
+      padding: 0;
+      button {
+        .top {
+          transform: translateY(10px);
+        }
+        .middle {
+          display: block;
+        }
+        .bottom {
+          transform: translateY(-10px);
+        }
+      }
+      .logo {
+        position: absolute;
+        left: 5px;
+        opacity: 0;
+      }
+    }
+    .non-active-class,
+    .active-class {
+      gap: 0;
+      margin: 0;
+      flex-shrink: 0;
+      .link_text {
+        display: none;
+      }
+    }
+  }
 
   .top_section {
+    position: relative;
+    height: 70px;
     display: flex;
     width: 100%;
+    padding-inline: 5px;
+    margin-bottom: 10px;
     border-bottom: 1px solid white;
-    align-content: center;
-    justify-content: center;
-    margin-bottom: 15%;
+    align-items: center;
+    justify-content: space-between;
 
-    img {
+    button {
+      border: none;
+      outline: none;
+      width: 2rem;
+      aspect-ratio: 1;
+      background-color: transparent;
+      position: relative;
+      cursor: pointer;
+      span {
+        top: 50%;
+        left: 0;
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: white;
+        transition: 0.5s;
+      }
+      .top {
+        transform: rotate(45deg);
+      }
+      .middle {
+        display: none;
+      }
+      .bottom {
+        transform: rotate(-45deg);
+      }
+    }
+
+    .logo {
+      height: 100%;
       align-self: center;
-      width: 6rem;
-      margin: 5% 0;
+      width: 4rem;
+      transition: 0.3s;
     }
   }
 
   .non-active-class,
   .active-class {
+    height: 45px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 1vh 1vw;
-    margin: 2% 0;
+    justify-content: start;
+    padding: 7px 10px;
+    gap: 10px;
     text-decoration: none;
     border-radius: 15px;
     transition: 0.3s;
 
-    img {
-      margin: 0 8% 0 0;
+    .icon {
+      margin: 0;
       padding: 0;
-      width: 1.5rem;
+      height: 80%;
+      display: flex;
+      align-items: center;
+      > img, svg {
+        height: 100%;
+        width: auto;
+      }
     }
 
     .link_text {

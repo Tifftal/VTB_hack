@@ -1,7 +1,4 @@
-import { useEffect, useState } from 'react';
-import { useSignUpMutation } from '../../store/api/userApi';
 import './index.scss'
-import SideBar from '../../components/sideBar';
 import MapWindow from '../../components/map';
 
 function HistoryPage() {
