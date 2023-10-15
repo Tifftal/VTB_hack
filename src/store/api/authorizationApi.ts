@@ -8,17 +8,26 @@ export interface IUserRegistration {
   Email: string;
   Password: string;
   rPassword: string;
+  LegalEntity: boolean;
 }
 
 export interface IUserLogin {
-  email: string;
-  password: string;
+  Email: string;
+  Password: string;
+}
+
+export interface IConfirmRegister {
+  confirmationCode: string
+}
+
+export interface IResendCode {
+  Email: string;
 }
 
 export const userApi = createApi({
   reducerPath: 'userAPI',
-  tagTypes: ['Authorization'],
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL, credentials: "same-origin", mode: "no-cors" }),
+  tagTypes: ['Authorization'],
   endpoints: (build) => ({
     signUp: build.mutation<unknown, IUserRegistration>({
       query: (body) => ({
@@ -26,7 +35,7 @@ export const userApi = createApi({
         method: 'POST',
         body,
       }),
-      invalidatesTags: [{ type: 'Authorization' }]
+      invalidatesTags: [{ type: 'Authorization' }],
     }),
     logIn: build.mutation<unknown, IUserLogin>({
       query: (body) => ({
@@ -36,7 +45,21 @@ export const userApi = createApi({
       }),
       invalidatesTags: [{ type: 'Authorization' }]
     }),
+    confirmRegister: build.mutation<unknown, IConfirmRegister>({
+      query: (body) => ({
+        url: "/user/confirm-registration",
+        method: "POST",
+        body,
+      })
+    }),
+    resendCode: build.mutation<unknown, IResendCode>({
+      query: (body) => ({
+        url: "/user/resend-code",
+        method: "POST",
+        body,
+      })
+    })
   })
 });
 
-export const { useSignUpMutation, useLogInMutation } = userApi;
+export const { useSignUpMutation, useLogInMutation, useResendCodeMutation, useConfirmRegisterMutation } = userApi;

@@ -1,4 +1,4 @@
-export const BASE_URL = "http://localhost:8080";
+export const BASE_URL = "http://81.177.135.38";
 
 export interface commonStateType {
     isSocketConnected: boolean;
