@@ -152,10 +152,14 @@ export const useAuthorization = () => {
         Email: formData.email,
         Password: formData.password,
       })
-        .then(() => {
-
+        .then((response) => {
+          console.log(response)
+          if (response.message === "авторизован") {
+            window.location.href = "http://localhost:3000";
+          }
         })
-        .catch(() => {
+        .catch((err) => {
+          console.log(err)
           setFormDataErrors((prev) => ({ ...prev, message: "Не удалось войти" }))
         });
     }

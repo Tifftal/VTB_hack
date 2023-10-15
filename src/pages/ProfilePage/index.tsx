@@ -43,7 +43,16 @@ function ProfilePage() {
 
     const handleSave = () => {
         // Отправка обновленных данных на сервер
-        setEditedField("");
+        switch (editedField) {
+            case "secondfield":
+                setUser({
+                    SecondName: user.SecondName,
+                    FirstName: user.FirstName,
+                    Email: user.Email,
+                    LegalEntity: user.LegalEntity,
+                })
+                console.log(user)
+        }
         // api.post('/api/users/update-user', updatedUserData); // Подставьте свой механизм обновления данных
     };
 
@@ -78,7 +87,7 @@ function ProfilePage() {
                         {editedField === "SecondName" ? (
                             <button onClick={handleSave}>Сохранить</button>
                         ) : (
-                            <button onClick={() => handleEdit("SecondName")}>Edit</button>
+                            <button onClick={() => handleEdit("secondname")}>Edit</button>
                         )}
                     </a>
                 </div>
@@ -98,7 +107,7 @@ function ProfilePage() {
                         {editedField === "FirstName" ? (
                             <button onClick={handleSave}>Сохранить</button>
                         ) : (
-                            <button onClick={() => handleEdit("FirstName")}>Edit</button>
+                            <button onClick={() => handleEdit("firstname")}>Edit</button>
                         )}
                     </a>
                 </div>
@@ -118,7 +127,7 @@ function ProfilePage() {
                         {editedField === "Email" ? (
                             <button onClick={handleSave}>Сохранить</button>
                         ) : (
-                            <button onClick={() => handleEdit("Email")}>Edit</button>
+                            <button onClick={() => handleEdit("email")}>Edit</button>
                         )}
                     </a>
                 </div>
@@ -138,7 +147,7 @@ function ProfilePage() {
                         {editedField === "LegalEntity" ? (
                             <button onClick={handleSave}>Сохранить</button>
                         ) : (
-                            <button onClick={() => handleEdit("LegalEntity")}>Edit</button>
+                            <button onClick={() => handleEdit("legalentity")}>Edit</button>
                         )}
                     </a>
                 </div>
