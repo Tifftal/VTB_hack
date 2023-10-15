@@ -42,7 +42,7 @@ function ProfilePage() {
         <div className='Profile'>
             <img className='header-image' src='../Glavnaya_M_CreditCard200days20perc_1920_2x_.png' />
             <div className='profile-image'>
-                <img src='../photo_2023-10-14 17.43.10.jpeg' alt='user' />
+                <img src='../icons8-пользователь-100.png' alt='user' />
                 <h1>{user.FirstName}{user.SecondName}</h1>
             </div>
             <div className='user-data'>

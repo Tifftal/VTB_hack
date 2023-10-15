@@ -43,7 +43,8 @@ const MapWidget: React.FC = () => {
                 center={location ?? BomonkaXY}
                 zoom={16}
                 scrollWheelZoom={true}
-                style={{ height: '100vh', width: '100vw' }}
+                className='map-window-style'
+                // style={{ height: '100vh', width: '100vw' }}
             >
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
