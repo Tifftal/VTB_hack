@@ -17,6 +17,15 @@ const MapWidget: React.FC = () => {
         'car'
     );
 
+    instance.on('routesfound', (e) => {
+        const routes = e.routes;
+        if (routes.length > 0) {
+          const route = routes[0]; // Возьмем первый маршрут, но может быть несколько вариантов.
+          const totalTime = route.summary.totalTime; // Получение времени маршрута в секундах.
+          console.log(`Время маршрута: ${totalTime} секунд`);
+        }
+      });
+
     React.useEffect(() => {
         const label = document.querySelector(
             '.leaflet-control-attribution.leaflet-control',
