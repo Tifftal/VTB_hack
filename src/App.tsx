@@ -3,6 +3,7 @@ import { HistoryPage, MapPage, ProfilePage } from "./pages";
 import './App.scss'
 import { Authorizaton } from "./components/Authorization";
 import SideBar from "./components/SideBar";
+import { Private } from "./store/axiosCore/Private";
 
 
 function App() {
@@ -13,11 +14,11 @@ function App() {
         <Routes>
           <Route path="/authorization" element={<Authorizaton />} />
         </Routes>
-        <SideBar>
+        <SideBar path="/">
           <Routes>
-            <Route path='/' element={<MapPage />} />
-            <Route path='/history' element={<HistoryPage />} />
-            <Route path='/profile' element={<ProfilePage />} />
+            <Route index element={<Private><MapPage /></Private>} />
+            <Route path='history' element={<HistoryPage />} />
+            <Route path='profile' element={<ProfilePage />} />
           </Routes>
         </SideBar>
       </BrowserRouter>

@@ -34,7 +34,9 @@ const signUp = async (userData: IUserRegistration) => {
 };
 const logIn = async (userData: IUserLogin) => {
   try {
-    const response = await api.post("/user/login", userData);
+    const response = await api.post("/user/login", userData, {
+      withCredentials: true,
+    });
     return response.data;
   } catch (error) {
     console.error("Error login:", error);
