@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './index.scss';
 import { api } from '../../store/axiosCore/api';
 
@@ -7,19 +7,18 @@ function ProfilePage() {
         SecondName: "",
         FirstName: "",
         Email: "",
-        LegalEntity: "",
+        LegalEntity: false,
     });
-
+    const [editedField, setEditedField] = useState("");
 
     useEffect(() => {
         api.get(`/api/users/get-user-by-id`)
             .then((res) => {
-                console.log(res);
                 setUser({
                     SecondName: res.data.SecondName,
                     FirstName: res.data.FirstName,
                     Email: res.data.Email,
-                    LegalEntity: res.data.LegalEntity ? "Являюсь юр. лицом" : "Не являюсь юр. лицом",
+                    LegalEntity: res.data.LegalEntity,
                 });
             })
             .catch(error => {
@@ -38,37 +37,114 @@ function ProfilePage() {
             });
     }
 
+    const handleEdit = (field: any) => {
+        setEditedField(field);
+    };
+
+    const handleSave = () => {
+        // Отправка обновленных данных на сервер
+        setEditedField("");
+        // api.post('/api/users/update-user', updatedUserData); // Подставьте свой механизм обновления данных
+    };
+
+    const handleInputChange = (e: any) => {
+        setUser({
+            ...user,
+            [e.target.name]: e.target.value,
+        });
+    };
+
     return (
         <div className='Profile'>
-            <img className='header-image' src='../Glavnaya_M_CreditCard200days20perc_1920_2x_.png' />
+            <img className='header-image' src='../Glavnaya_M_CreditCard200days20perc_1920_2x_.png' alt='header' />
             <div className='profile-image'>
                 <img src='../icons8-пользователь-100.png' alt='user' />
-                <h1>{user.FirstName}{user.SecondName}</h1>
+                <h1>{user.FirstName} {user.SecondName}</h1>
             </div>
             <div className='user-data'>
                 <div>
                     <h2>Фамилия</h2>
-                    <p>{user.SecondName}</p>
-                    <a><button>Edit</button></a>
+                    {editedField === "SecondName" ? (
+                        <input
+                            type="text"
+                            name="SecondName"
+                            value={user.SecondName}
+                            onChange={handleInputChange}
+                        />
+                    ) : (
+                        <p>{user.SecondName}</p>
+                    )}
+                    <a>
+                        {editedField === "SecondName" ? (
+                            <button onClick={handleSave}>Сохранить</button>
+                        ) : (
+                            <button onClick={() => handleEdit("SecondName")}>Edit</button>
+                        )}
+                    </a>
                 </div>
                 <div>
                     <h2>Имя</h2>
-                    <p>{user.FirstName}</p>
-                    <a><button>Edit</button></a>
+                    {editedField === "FirstName" ? (
+                        <input
+                            type="text"
+                            name="FirstName"
+                            value={user.FirstName}
+                            onChange={handleInputChange}
+                        />
+                    ) : (
+                        <p>{user.FirstName}</p>
+                    )}
+                    <a>
+                        {editedField === "FirstName" ? (
+                            <button onClick={handleSave}>Сохранить</button>
+                        ) : (
+                            <button onClick={() => handleEdit("FirstName")}>Edit</button>
+                        )}
+                    </a>
                 </div>
                 <div>
                     <h2>Email</h2>
-                    <p>{user.FirstName}</p>
-                    <a><button>Edit</button></a>
+                    {editedField === "Email" ? (
+                        <input
+                            type="text"
+                            name="Email"
+                            value={user.Email}
+                            onChange={handleInputChange}
+                        />
+                    ) : (
+                        <p>{user.Email}</p>
+                    )}
+                    <a>
+                        {editedField === "Email" ? (
+                            <button onClick={handleSave}>Сохранить</button>
+                        ) : (
+                            <button onClick={() => handleEdit("Email")}>Edit</button>
+                        )}
+                    </a>
                 </div>
                 <div>
                     <h2>Юр. лицо</h2>
-                    <p>{user.LegalEntity}</p>
-                    <a><button>Edit</button></a>
+                    {editedField === "LegalEntity" ? (
+                        <input
+                            type="checkbox"
+                            name="LegalEntity"
+                            checked={user.LegalEntity}
+                            onChange={handleInputChange}
+                        />
+                    ) : (
+                        <p>{user.LegalEntity ? "Являюсь юр. лицом" : "Не являюсь юр. лицом"}</p>
+                    )}
+                    <a>
+                        {editedField === "LegalEntity" ? (
+                            <button onClick={handleSave}>Сохранить</button>
+                        ) : (
+                            <button onClick={() => handleEdit("LegalEntity")}>Edit</button>
+                        )}
+                    </a>
                 </div>
             </div>
 
-            <button className='delete-profile' onClick={() => deleteUser()}>Удалить аккаунт</button>
+            <button className='delete-profile' onClick={deleteUser}>Удалить аккаунт</button>
         </div>
     );
 }
