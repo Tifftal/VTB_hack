@@ -5,6 +5,7 @@ import CreateRoutingMachine from './Routing';
 import { LocationMarker } from './locationMarker';
 import 'leaflet/dist/leaflet.css';
 import { MapMarker } from './marker';
+import './main.scss';
 
 const BomonkaXY = [55.76576159446994, 37.68564981865584] as [number, number];
 const HomeXY = [55.59014250668012, 37.44804901630521] as [number, number];
@@ -37,12 +38,12 @@ const MapWidget: React.FC = () => {
 
     return (
         <div className='map-window'>
-            <h2>Это Бомонка</h2>
+            {/* <h2>Это Бомонка</h2> */}
             <MapContainer
                 center={location ?? BomonkaXY}
                 zoom={16}
                 scrollWheelZoom={true}
-                style={{ height: '800px', width: '1000px' }}
+                style={{ height: '100vh', width: '100vw' }}
             >
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
