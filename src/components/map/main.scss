@@ -1,8 +1,10 @@
-
 .map-window{
-    border-color: black;
-    border: 3px solid;
-    margin: 5px;
+    // border-color: black;
+    // border: 3px solid;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 
