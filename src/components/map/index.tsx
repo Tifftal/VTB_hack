@@ -1,17 +1,26 @@
 import React from 'react';
-import { LatLng } from 'leaflet';
+import { LatLng, map } from 'leaflet';
 import { MapContainer, Marker, TileLayer } from 'react-leaflet';
 import CreateRoutingMachine from './Routing';
 import { LocationMarker } from './locationMarker';
 import 'leaflet/dist/leaflet.css';
 import { MapMarker } from './marker';
 import './main.scss';
+import Offices from './offices.json'
+import { selectBranches } from '../../store/slices/pointsSlise';
+import { useSelector } from '../../store/store';
 
 const BomonkaXY = [55.76576159446994, 37.68564981865584] as [number, number];
 const HomeXY = [55.59014250668012, 37.44804901630521] as [number, number];
 
-const MapWidget: React.FC = () => {
+export interface IMapwindowProps { 
+
+}
+
+const MapWidget: React.FC<IMapwindowProps> = () => {
     const [location, setLocation] = React.useState<LatLng | null>(null);
+
+    const branches = useSelector(selectBranches);
     const { instance, Router } = CreateRoutingMachine(
         location ? [location.lat, location.lng] : HomeXY,
         BomonkaXY,
@@ -51,8 +60,11 @@ const MapWidget: React.FC = () => {
                 />
                 <MapMarker type='default' position={BomonkaXY} />
                 <MapMarker type='default' position={HomeXY} />
+                {
+                   branches.length > 0 && branches?.map((data, key)=>(<MapMarker key={key+1} type='bank' position={[data?.latitude,data?.longitude]} />))
+                }
                 <LocationMarker location={location} setLocation={setLocation} />
-                <Router />
+                {/* <Router /> */}
 
             </MapContainer>
         </div>
