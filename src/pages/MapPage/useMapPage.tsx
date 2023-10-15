@@ -4,7 +4,7 @@ import { IPlaceBarProps } from "../../components/PlaceBar";
 import { ISearchBarProps } from "../../components/SearchBar";
 import { getAllAtms, getAllBranchs } from "../../store/axiosCore/map";
 import { useDispatch, useSelector } from "../../store/store";
-import { saveBranches, selectBranches } from "../../store/slices/pointsSlise";
+import { saveAtms, saveBranches, selectAtms, selectBranches } from "../../store/slices/pointsSlise";
 
 export const useMapPage = () => {
   const [points, setPoints] = useState([]);
@@ -15,12 +15,13 @@ export const useMapPage = () => {
     getAllBranchs()
     .then((data) => dispatch(saveBranches(data)))
     .catch((error) => console.log(error));
-    /* getAllAtms()
-    .then((data) => console.log(data))
-    .catch((error) => console.log(error)); */
+    getAllAtms()
+    .then((data) => dispatch(saveAtms(data)))
+    .catch((error) => console.log(error));
   }, []);
 
   const branches = useSelector(selectBranches);
+  const atms = useSelector(selectAtms);
 
   /* const bankList: placeProps[] = [
     {

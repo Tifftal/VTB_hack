@@ -30,6 +30,47 @@ export interface IBranch {
   talonCount: number;
 }
 
+export interface IAtm {
+  address: string;
+  allDay: boolean;
+  latitude: number;
+  longitude: number;
+  services: {
+    blind: {
+      serviceActivity: string;
+      serviceCapability: string;
+    };
+    nfcForBankCards: {
+      serviceActivity: string;
+      serviceCapability: string;
+    };
+    qrRead: {
+      serviceActivity: string;
+      serviceCapability: string;
+    };
+    supportsChargeRub: {
+      serviceActivity: string;
+      serviceCapability: string;
+    };
+    supportsEur: {
+      serviceActivity: string;
+      serviceCapability: string;
+    };
+    supportsRub: {
+      serviceActivity: string;
+      serviceCapability: string;
+    };
+    supportsUsd: {
+      serviceActivity: string;
+      serviceCapability: string;
+    };
+    wheelchair: {
+      serviceActivity: string;
+      serviceCapability: string;
+    };
+  };
+}
+
 const getBranchBySearch = async (e: React.FormEvent, searchText: string): Promise<IBranch[]> => {
   e.preventDefault();
   try {
@@ -50,9 +91,9 @@ const getAllBranchs = async (): Promise<IBranch[]> => {
     throw error;
   }
 };
-const getAllAtms = async () => {
+const getAllAtms = async (): Promise<IAtm[]> => {
   try {
-    const response = await api.get(`/api/atm/get-all-atm`);
+    const response: AxiosResponse<IAtm[]> = await api.get(`/api/atm/get-all-atm`);
     return response.data;
   } catch (error) {
     throw error;
