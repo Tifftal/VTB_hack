@@ -1,17 +1,70 @@
-// .Page1 {
-//     display: flex;
-//     flex-direction: column;
-//     margin: 1vh;
-//     width: 100%;
-// }
+.History {
+    display: flex;
+    flex-direction: column;
+    margin: 1vh;
+    width: 100%;
 
-// .inputforms {
-//     display: flex;
-//     margin: 5px;
-//     padding: 5px;
-// }
+    h1 {
+        font-size: 200%;
+        margin: 0;
+        padding: 0;
+        margin-left: 5%;
+        margin-top: 2%;
+        margin-bottom: 1%;
+    }
 
-// .SugnUp-Button {
-//     margin: 5px;
-//     padding: 5px;
-// }
+    .scroll-history {
+        height: 89vh;
+        overflow-y: scroll;
+    }
+
+    .way {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background-color: white;
+        border-radius: 15px;
+        width: fit-content;
+        padding: 2vh;
+        margin: 1%;
+        overflow-y: scroll;
+
+        .property-way {
+            width: 20vw;
+
+            p {
+                .from:empty {
+                    background: red;
+                    padding: 0.3rem;
+                    border-radius: 100%;
+                    margin-right: 2%;
+                    display: inline-block;
+                }
+
+                .where:empty {
+                    background: rgb(0, 0, 0);
+                    padding: 0.3rem;
+                    border-radius: 100%;
+                    margin-right: 2%;
+                    display: inline-block;
+                }
+            }
+        }
+
+        .map-window {
+            position: relative;
+            border-radius: 15px;
+
+            .leaflet-control-zoom {
+                display: none;
+
+            }
+
+            .map-window-style {
+                height: 20vh;
+                border-radius: 15px;
+                width: 30vw;
+            }
+        }
+    }
+}

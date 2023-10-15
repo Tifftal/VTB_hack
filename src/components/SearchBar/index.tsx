@@ -8,54 +8,51 @@ import Transport from '../TypeTransport';
 
 export interface ISearchBarProps {
 
-    
+
 
 }
 
 const SearchBar: FC<ISearchBarProps> = () => {
-  const showAtm = useSelector(selectIsShowAtm);
-  const [isContentVisible, setIsContentVisible] = useState(true);
-  const dispatch = useDispatch();
+    const showAtm = useSelector(selectIsShowAtm);
+    const [isContentVisible, setIsContentVisible] = useState(true);
+    const dispatch = useDispatch();
 
-  const [searchText, setSearchText] = useState("");
+    const [searchText, setSearchText] = useState("");
 
-  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      getBranchBySearch(e, searchText)
-        .then((points) => {
-          dispatch(saveBranches(points));
-        })
-        .catch((error) => console.error(error));
-    }
-  };
+    const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            getBranchBySearch(e, searchText)
+                .then((points) => {
+                    dispatch(saveBranches(points));
+                })
+                .catch((error) => console.error(error));
+        }
+    };
 
     const toggleContentVisibility = () => {
         setIsContentVisible((prev) => !prev);
     };
 
-  const handleShowAtmChange = () => {
-    dispatch(changeIsShowAtm(!showAtm));
-  }
+    const handleShowAtmChange = () => {
+        dispatch(changeIsShowAtm(!showAtm));
+    }
 
-  return (
-    <div className="search-bar">
-      <form className="search">
-        <input
-          className='search-input'
-          type="text"
-          placeholder="Поиск"
-          onChange={(e) => setSearchText(e.target.value)}
-          onKeyPress={handleKeyPress}
-        />
-      </form>
+    return (
+        <div className="search-bar">
+            <form className="search">
+                <input
+                    className='search-input'
+                    type="text"
+                    placeholder="Поиск"
+                    onChange={(e) => setSearchText(e.target.value)}
+                    onKeyPress={handleKeyPress}
+                />
+            </form>
             {isContentVisible && (
                 <>
                     <div>
-                        <Transport />
+                        <Filter setShowAtm={handleShowAtmChange} showAtm={showAtm} />
                     </div>
-              <div>
-                <Filter setShowAtm={handleShowAtmChange} showAtm={showAtm} />
-              </div>
                 </>
             )}
 
@@ -64,8 +61,8 @@ const SearchBar: FC<ISearchBarProps> = () => {
             </button>
 
 
-    </div>
-  );
+        </div>
+    );
 };
 
 export default SearchBar;
