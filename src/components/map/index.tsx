@@ -6,14 +6,15 @@ import { LocationMarker } from './locationMarker';
 import 'leaflet/dist/leaflet.css';
 import { MapMarker } from './marker';
 
-const BomonkaXY = [55.76576159446994, 37.68564981865584] as [number, number]; 
-const HomeXY = [55.59014250668012,37.44804901630521] as [number, number];
+const BomonkaXY = [55.76576159446994, 37.68564981865584] as [number, number];
+const HomeXY = [55.59014250668012, 37.44804901630521] as [number, number];
 
 const MapWidget: React.FC = () => {
     const [location, setLocation] = React.useState<LatLng | null>(null);
     const { instance, Router } = CreateRoutingMachine(
         location ? [location.lat, location.lng] : HomeXY,
-    BomonkaXY,
+        BomonkaXY,
+        'car'
     );
 
     React.useEffect(() => {
