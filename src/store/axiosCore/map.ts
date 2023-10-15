@@ -34,13 +34,13 @@ const getBranchBySearch = async (e: React.FormEvent, searchText: string): Promis
   e.preventDefault();
   try {
     const response: AxiosResponse<IBranch[]> = await api.get(`/api/branches/get-branch-by-search/${searchText}`);
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error(error);
     throw error;
   }
 };
-
 
 export {getBranchBySearch, }
 
