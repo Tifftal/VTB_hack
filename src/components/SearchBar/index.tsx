@@ -51,9 +51,6 @@ const SearchBar: FC<ISearchBarProps> = () => {
             {isContentVisible && (
                 <>
                     <div>
-                        <Transport />
-                    </div>
-                    <div>
                         <Filter setShowAtm={handleShowAtmChange} showAtm={showAtm} />
                     </div>
                 </>
