@@ -1,5 +1,7 @@
 import React, { ReactNode } from "react";
 import { Navigate, useLocation } from "react-router-dom";
+import { useSelector } from "../store";
+import { selectLog } from "../slices/pointsSlise";
 
 interface PrivateProps {
   children: ReactNode;
@@ -7,9 +9,9 @@ interface PrivateProps {
 
 function Private({ children }: PrivateProps) {
   const location = useLocation();
-  const auth = true;
+  const isAuth = useSelector(selectLog);
 
-  if (!auth) {
+  if (!isAuth) {
     return (
       <Navigate
         to="/authorization"

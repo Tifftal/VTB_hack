@@ -3,6 +3,7 @@ import { ChangeEvent, ClickEvent } from "../../app.typing";
 import { logIn, signUp, confirmRegister, resendCode } from "../../store/axiosCore/auth";
 import { useDispatch } from "../../store/store";
 import { saveLogin } from "../../store/slices/pointsSlise";
+import { useNavigate } from "react-router-dom";
 
 export const useAuthorization = () => {
 
@@ -44,6 +45,7 @@ export const useAuthorization = () => {
   const inputRefs = useRef<Array<HTMLInputElement | null>>([]);
   const emailConfirm = useRef("");
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -158,9 +160,8 @@ export const useAuthorization = () => {
       })
         .then((response) => {
           console.log(response)
-          if (response.message === "авторизован") {
-            window.location.href = "http://localhost:3000";
-          }
+          dispatch(saveLogin());
+          navigate("/");
         })
         .catch((err) => {
           console.log(err)
@@ -180,7 +181,6 @@ export const useAuthorization = () => {
         setIsLoginPage(true);
         setFormData({ ...defaultFormData });
         setFormDataErrors({ ...defaultErrors });
-        dispatch(saveLogin());
       })
       .catch(() => {
         setFormDataErrors((prev) => ({ ...prev, message: "Не удалось подтвердить регистрацию" }))

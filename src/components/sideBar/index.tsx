@@ -2,9 +2,16 @@ import { NavLink } from "react-router-dom";
 import './index.scss'
 import { useState } from "react";
 import { LogoIcon, SignUpIcon } from "../../UI/icons";
+import { useDispatch, useSelector } from "../../store/store";
+import { saveLogin, savelogout, selectLog } from "../../store/slices/pointsSlise";
 
 export default function SideBar({ children }: any) {
   const [isSideBarActive, setIsSideBarActive] = useState(false);
+
+  const isAuth = useSelector(selectLog);
+  const dispatch = useDispatch()
+
+  console.log(isAuth);
 
   const menuItem = [
     {
@@ -24,7 +31,7 @@ export default function SideBar({ children }: any) {
     },
     {
       path: "/authorization",
-      name: "Выйти",
+      name: isAuth ? "Выйти" : "Войти",
       icon: <SignUpIcon fill="white" />,
     }
   ]
@@ -33,7 +40,7 @@ export default function SideBar({ children }: any) {
       <div className={isSideBarActive ? "sidebar" : "sidebar close"}>
         <div className="top_section">
           <div className="logo">
-            <LogoIcon fill="white"/>
+            <LogoIcon fill="white" />
           </div>
           <button
             className={isSideBarActive ? "" : "close"}
@@ -46,9 +53,12 @@ export default function SideBar({ children }: any) {
         </div>
         {
           menuItem.map((item, index) => (
-            <NavLink to={item.path} key={index} className={({ isActive }) => isActive ? "active-class" : "non-active-class"} >
+            <NavLink
+              onClick={isAuth ? () => dispatch(savelogout) : () => dispatch(saveLogin)}
+              to={item.path} key={index} className={({ isActive }) => isActive ? "active-class" : "non-active-class"}
+            >
               <div className="icon">
-                {item.icon} 
+                {item.icon}
               </div>
               <div className="link_text">{item.name}</div>
             </NavLink>
