@@ -9,8 +9,7 @@ import './main.scss';
 import { selectBranches, selectAtms, selectIsShowAtm } from '../../store/slices/pointsSlise';
 import { useSelector } from '../../store/store';
 
-const BomonkaXY = [55.76576159446994, 37.68564981865584] as [number, number];
-const HomeXY = [55.59014250668012, 37.44804901630521] as [number, number];
+const mark1 = [55.773763, 37.675002] as [number, number];
 
 export interface IMapwindowProps {
 
@@ -23,8 +22,8 @@ const MapWidget: React.FC<IMapwindowProps> = () => {
     const atms = useSelector(selectAtms);
     const flag = useSelector(selectIsShowAtm);
     const { instance, Router } = CreateRoutingMachine(
-        location ? [location.lat, location.lng] : HomeXY,
-        BomonkaXY,
+        location ? [location.lat, location.lng] : mark1,
+        mark1,
         'car'
     );
 
@@ -49,7 +48,7 @@ const MapWidget: React.FC<IMapwindowProps> = () => {
     return (
         <div className='map-window'>
             <MapContainer
-                center={location ?? BomonkaXY}
+                center={location ?? [55.75399399999374,37.62209300000001]}
                 zoom={16}
                 scrollWheelZoom={true}
                 className='map-window-style'
@@ -74,7 +73,9 @@ const MapWidget: React.FC<IMapwindowProps> = () => {
 
 
                 <LocationMarker location={location} setLocation={setLocation} />
-                {/* <Router /> */}
+                <MapMarker type='atm' position={mark1} />
+                
+                <Router />
 
             </MapContainer>
         </div>
