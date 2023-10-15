@@ -4,13 +4,17 @@ import { FC, useState } from 'react';
 import { getBranchBySearch } from '../../store/axiosCore/map';
 import { useDispatch, useSelector } from '../../store/store';
 import { changeIsShowAtm, saveBranches, selectIsShowAtm } from '../../store/slices/pointsSlise';
+import Transport from '../TypeTransport';
 
 export interface ISearchBarProps {
+
+    
 
 }
 
 const SearchBar: FC<ISearchBarProps> = () => {
   const showAtm = useSelector(selectIsShowAtm);
+  const [isContentVisible, setIsContentVisible] = useState(true);
   const dispatch = useDispatch();
 
   const [searchText, setSearchText] = useState("");
@@ -24,6 +28,10 @@ const SearchBar: FC<ISearchBarProps> = () => {
         .catch((error) => console.error(error));
     }
   };
+
+    const toggleContentVisibility = () => {
+        setIsContentVisible((prev) => !prev);
+    };
 
   const handleShowAtmChange = () => {
     dispatch(changeIsShowAtm(!showAtm));
@@ -40,9 +48,22 @@ const SearchBar: FC<ISearchBarProps> = () => {
           onKeyPress={handleKeyPress}
         />
       </form>
-      <div>
-        <Filter setShowAtm={handleShowAtmChange} showAtm={showAtm} />
-      </div>
+            {isContentVisible && (
+                <>
+                    <div>
+                        <Transport />
+                    </div>
+              <div>
+                <Filter setShowAtm={handleShowAtmChange} showAtm={showAtm} />
+              </div>
+                </>
+            )}
+
+            <button className='drop-down' onClick={toggleContentVisibility}>
+                {isContentVisible ? <img src='../icons8-стрелка-100-2.png' /> : <img src='../icons8-стрелка-100.png' />}
+            </button>
+
+
     </div>
   );
 };

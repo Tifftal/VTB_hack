@@ -5,15 +5,16 @@
     align-items: flex-start;
     justify-content: flex-start;
     margin: 1vh;
-    width: 20%;
-    height: 20vh;
+    width: 20vw;
+    height: fit-content;
     background-color: white;
     border-radius: 15px;
-    padding: 2vh;
+    padding: 2vh 2vh 0 2vh;
     box-shadow: 0px 1px 2px rgb(0, 133, 255, 0.3);
 
     .search {
-        margin-bottom: 1rem;
+        margin-bottom: 0.2rem;
+        width: 100%;
 
         .search-input {
             width: 100%;
@@ -23,5 +24,19 @@
         }
     }
 
+    .drop-down {
+        align-self: center;
+        background: none;
+        border: none;
+        margin: 0;
+        padding: 0;
+
+        img {
+            margin: 0;
+            padding: 0;
+            width: 1.5rem;
+            filter: invert(0.7);
+        }
+    }
 
 }
