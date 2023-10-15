@@ -16,7 +16,7 @@ export const PlaceBar: FC<IPlaceBarProps> = (props) => {
       {isShowAtm ? (
         <div className='place_bar-atm-content'>ATM Content</div>
       ) : (
-        branches.length > 0 && (
+        branches && branches.length > 0 && (
           <div className='place_bar-list'>
             {branches.map((place, index) => (
               <div key={index} className='place_bar-place'>

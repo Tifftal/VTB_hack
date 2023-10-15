@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { ChangeEvent, ClickEvent } from "../../app.typing";
 import { logIn, signUp, confirmRegister, resendCode } from "../../store/axiosCore/auth";
+import { useDispatch } from "../../store/store";
+import { saveLogin } from "../../store/slices/pointsSlise";
 
 export const useAuthorization = () => {
 
@@ -41,6 +43,8 @@ export const useAuthorization = () => {
   const [formDataErrors, setFormDataErrors] = useState({ ...defaultErrors });
   const inputRefs = useRef<Array<HTMLInputElement | null>>([]);
   const emailConfirm = useRef("");
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const emailForConfirmation = localStorage.getItem('emailForConfirmation');
@@ -176,6 +180,7 @@ export const useAuthorization = () => {
         setIsLoginPage(true);
         setFormData({ ...defaultFormData });
         setFormDataErrors({ ...defaultErrors });
+        dispatch(saveLogin());
       })
       .catch(() => {
         setFormDataErrors((prev) => ({ ...prev, message: "Не удалось подтвердить регистрацию" }))

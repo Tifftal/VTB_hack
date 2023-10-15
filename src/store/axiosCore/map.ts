@@ -34,6 +34,7 @@ const getBranchBySearch = async (e: React.FormEvent, searchText: string): Promis
   e.preventDefault();
   try {
     const response: AxiosResponse<IBranch[]> = await api.get(`/api/branches/get-branch-by-search/${searchText}`);
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -41,6 +42,22 @@ const getBranchBySearch = async (e: React.FormEvent, searchText: string): Promis
   }
 };
 
+const getAllBranchs = async (): Promise<IBranch[]> => {
+  try {
+    const response: AxiosResponse<IBranch[]> = await api.get(`/api/branches/get-all-branches`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+const getAllAtms = async () => {
+  try {
+    const response = await api.get(`/api/atm/get-all-atm`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
 
-export {getBranchBySearch, }
+export { getBranchBySearch, getAllBranchs, getAllAtms }
 

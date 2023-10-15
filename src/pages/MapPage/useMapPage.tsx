@@ -2,11 +2,23 @@ import { useEffect, useState } from "react";
 import { placeProps } from "../../store/api/banksApi";
 import { IPlaceBarProps } from "../../components/PlaceBar";
 import { ISearchBarProps } from "../../components/SearchBar";
-import { useSelector } from "../../store/store";
-import { selectBranches } from "../../store/slices/pointsSlise";
+import { getAllAtms, getAllBranchs } from "../../store/axiosCore/map";
+import { useDispatch, useSelector } from "../../store/store";
+import { saveBranches, selectBranches } from "../../store/slices/pointsSlise";
 
 export const useMapPage = () => {
   const [points, setPoints] = useState([]);
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    getAllBranchs()
+    .then((data) => dispatch(saveBranches(data)))
+    .catch((error) => console.log(error));
+    /* getAllAtms()
+    .then((data) => console.log(data))
+    .catch((error) => console.log(error)); */
+  }, []);
 
   const branches = useSelector(selectBranches);
 
