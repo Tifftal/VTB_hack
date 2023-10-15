@@ -10,7 +10,7 @@ api.interceptors.request.use((req) => {
   return {
     ...req,
     baseURL: serverURI,
-    withCredentials: false,
+    withCredentials: true,
   };
 });
 

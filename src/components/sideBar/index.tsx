@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import './index.scss'
 import { useState } from "react";
 import { LogoIcon, SignUpIcon } from "../../UI/icons";
+import { api } from "../../store/axiosCore/api";
 
 export default function SideBar({ children }: any) {
   const [isSideBarActive, setIsSideBarActive] = useState(false);
@@ -21,11 +22,6 @@ export default function SideBar({ children }: any) {
       path: "/profile",
       name: "Профиль",
       icon: <img src="../icons8-user-96-2.png"></img>,
-    },
-    {
-      path: "/authorization",
-      name: "Выйти",
-      icon: <SignUpIcon fill="white" />,
     }
   ]
   return (
@@ -33,7 +29,7 @@ export default function SideBar({ children }: any) {
       <div className={isSideBarActive ? "sidebar" : "sidebar close"}>
         <div className="top_section">
           <div className="logo">
-            <LogoIcon fill="white"/>
+            <LogoIcon fill="white" />
           </div>
           <button
             className={isSideBarActive ? "" : "close"}
@@ -48,12 +44,26 @@ export default function SideBar({ children }: any) {
           menuItem.map((item, index) => (
             <NavLink to={item.path} key={index} className={({ isActive }) => isActive ? "active-class" : "non-active-class"} >
               <div className="icon">
-                {item.icon} 
+                {item.icon}
               </div>
               <div className="link_text">{item.name}</div>
             </NavLink>
           ))
         }
+        <NavLink to="/authorization" className={({ isActive }) => isActive ? "active-class" : "non-active-class"} onClick={() => {
+          api.put(`/api/users/logout`)
+          .then(response => {
+            console.log(response);
+          })
+          .catch(err => {
+            console.error(err);
+          })
+        }}>
+          <div className="icon">
+            <SignUpIcon fill="white" />
+          </div>
+          <div className="link_text">Выйти</div>
+        </NavLink>
       </div>
       <main>{children}</main>
     </div>

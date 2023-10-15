@@ -31,6 +31,7 @@ function ProfilePage() {
             .then((res) => {
                 console.log(res.data);
                 console.log('User deleted');
+                window.location.href="http://localhost:3000/authorization";
             })
             .catch(error => {
                 console.error(error);
