@@ -1,45 +1,50 @@
 import './index.scss';
-import Filter from '../Filters';
-import { useState } from 'react';
-import { api } from '../../store/axiosCore/api';
+import { Filter } from '../Filters';
+import { FC, useState } from 'react';
+import { getBranchBySearch } from '../../store/axiosCore/map';
+import { useDispatch, useSelector } from '../../store/store';
+import { changeIsShowAtm, saveBranches, selectIsShowAtm } from '../../store/slices/pointsSlise';
 
-const SearchBar = () => {
+export interface ISearchBarProps {
 
-    const [query, setQuery] = useState("");
+}
 
-    const sendQuery = async (e: any) => {
-        e.preventDefault();
-        try {
-            const response = await api.get(`/api/branches/get-branch-by-search/${query}`);
-            console.log(response)
-        } catch (error) {
-            console.log(error);
-        }
-        console.log(query);
+const SearchBar: FC<ISearchBarProps> = () => {
+  const showAtm = useSelector(selectIsShowAtm);
+  const dispatch = useDispatch();
+
+  const [searchText, setSearchText] = useState("");
+
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      getBranchBySearch(e, searchText)
+        .then((points) => {
+          dispatch(saveBranches(points));
+        })
+        .catch((error) => console.error(error));
     }
+  };
 
-    const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Enter') {
-            sendQuery(e);
-        }
-    };
+  const handleShowAtmChange = () => {
+    dispatch(changeIsShowAtm(!showAtm));
+  }
 
-    return (
-        <div className="search-bar">
-            <form className="search">
-                <input
-                    className='search-input'
-                    type="text"
-                    placeholder="Поиск"
-                    onChange={(e) => setQuery(e.target.value)}
-                    onKeyPress={handleKeyPress}
-                />
-            </form>
-            <div>
-                <Filter />
-            </div>
-        </div>
-    );
+  return (
+    <div className="search-bar">
+      <form className="search">
+        <input
+          className='search-input'
+          type="text"
+          placeholder="Поиск"
+          onChange={(e) => setSearchText(e.target.value)}
+          onKeyPress={handleKeyPress}
+        />
+      </form>
+      <div>
+        <Filter setShowAtm={handleShowAtmChange} showAtm={showAtm} />
+      </div>
+    </div>
+  );
 };
 
 export default SearchBar;

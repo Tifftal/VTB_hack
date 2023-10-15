@@ -11,7 +11,7 @@ function MapPage() {
     <div className="MainPage">
       <SearchBar />
       <MapWindow/>
-      <PlaceBar {...placeBarProps} />
+      <PlaceBar />
 
     </div>
   )

@@ -5,7 +5,7 @@ import {
   useSelector as useReduxSelector,
 } from "react-redux";
 
-import { reducer as counterReducer } from "./slices/countSlice.ts"
+import { reducer as pointsReducer } from './slices/pointsSlise.ts';
 import { userApi } from './api/authorizationApi.ts';
 import { searchApi } from './api/searchApi.ts';
 /* import { socketMiddleware } from './middleware.ts'; */
@@ -18,7 +18,7 @@ export const middlewares = [
 ];
 
 const rootReducer = combineReducers({
-  counter: counterReducer,  // тут слайсы
+  points: pointsReducer, // тут слайсы
   [userApi.reducerPath]: userApi.reducer,  // и тут тоже апи
   [searchApi.reducerPath]: searchApi.reducer,
 });

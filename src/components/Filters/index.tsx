@@ -1,19 +1,13 @@
-import { useState } from 'react';
-import './index.scss';
+import { FC } from 'react'
+import './index.scss'
 
-export default function Filter() {
-    const [atmChecked, setAtmChecked] = useState(true);
-    const [officeChecked, setOfficeChecked] = useState(false);
+export interface IFilterProps {
+  showAtm: boolean;
+  setShowAtm: (value: boolean) => void;
+}
 
-    const handleCheckboxChange = (type: string) => {
-        if (type === 'atm') {
-            setAtmChecked(!atmChecked);
-            setOfficeChecked(atmChecked);
-        } else if (type === 'office') {
-            setOfficeChecked(!officeChecked);
-            setAtmChecked(officeChecked);
-        }
-    };
+export const Filter: FC<IFilterProps> = (props) => {
+    const { showAtm, setShowAtm } = props;
 
     return (
         <div className='filters'>
@@ -24,8 +18,8 @@ export default function Filter() {
                         type="checkbox"
                         id="atm"
                         name='atm'
-                        checked={atmChecked}
-                        onChange={() => handleCheckboxChange('atm')}
+                        checked={showAtm}
+                        onChange={() => setShowAtm(!showAtm)}
                     />
                     <label className='label-filter' htmlFor="atm"></label>
                 </div>
@@ -38,8 +32,8 @@ export default function Filter() {
                         type="checkbox"
                         id="office"
                         name='office'
-                        checked={officeChecked}
-                        onChange={() => handleCheckboxChange('office')}
+                        checked={!showAtm}
+                        onChange={() => setShowAtm(showAtm)}
                     />
                     <label className='label-filter' htmlFor="office"></label>
                 </div>
